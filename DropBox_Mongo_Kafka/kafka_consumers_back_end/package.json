@@ -1,0 +1,25 @@
+{
+  "name": "kafka_consumers_back_end",
+  "version": "1.0.0",
+  "description": "Kafka client",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev-start": "nodemon server.js"
+  },
+  "author": "Rahil Modi",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^1.0.3",
+    "buffer": "^5.0.8",
+    "express": "^4.16.2",
+    "kafka-node": "^2.3.2",
+    "mongodb": "^3.0.2",
+    "nodemailer": "^4.4.2",
+    "nodemailer-smtp-transport": "^2.7.4",
+    "nodemon": "^1.14.12",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "zip-folder": "^1.0.0"
+  }
+}
