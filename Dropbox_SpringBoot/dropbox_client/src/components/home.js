@@ -141,7 +141,8 @@ class Home extends Component {
     
     star(file)
     {
-        if(file.star){
+        console.log(file.star)
+        if(file.star == 'YES'){
             return <img onClick={()=>this.props.dostar(file,this.state.userid,this.state.currentfolderid)}  src={require('../images/bluestar.png')} alt="" style={{width:"20px",height:"20px"}}/>           
         }
         else{
@@ -268,18 +269,18 @@ class Home extends Component {
            }  
         }
     }
-    onChange (value) {
-        console.log(value);
-        this.setState({shareUser :[ ...this.state.shareUser,value]})
+    inputChange (value) {
+        console.log("value"+ value)
+		this.setState({shareUser : value})
         console.log(this.state.shareUser)
     }
     getUsers (input) {
         console.log(this.state.shareUser+"----"+input);
         
-		if (!input) {
-            console.log("i should not call "+input)
+		if (!input || input.length < 3) {
+            console.log("i should not be called "+input)
 			return Promise.resolve({ options: [] });
-		}
+		}else{
 		return fetch(`${URL}/user/suggestions`, {
             method: 'POST',
             headers: {
@@ -287,11 +288,12 @@ class Home extends Component {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({"data1":input})})
-            .then((response) => response.json())
-		    .then((json) => {
-                // console.log("response"+JSON.stringify(json))
-			    return  json.users ;
-		    });
+            .then(response => response.json())
+		    .then(json => {
+                console.log(JSON.stringify(json.users))
+			    return  {options:json.users};
+            });
+        }
     }
     
     displayUser(user,i){
@@ -369,10 +371,10 @@ class Home extends Component {
                     <hr/>
                     <div className="section">
                         <Select.Async multi={true}
-                        value={this.state.shareUser} 
-                        onChange = {this.onChange.bind(this)}
+                        value = {this.state.shareUser} 
                         valueKey="id"
                         labelKey="all" 
+                        onChange = {this.inputChange.bind(this)}
                         loadOptions={this.getUsers.bind(this)} 
                         backspaceRemoves={true}
                         placeholder="Email or Name " />
@@ -419,9 +421,9 @@ class Home extends Component {
                     </div>
                     <div className="modal-body">
                     <div className="section">
-                        <AsyncComponent multi={true}
+                        <Select multi={true}
                         value={this.state.shareUser} 
-                        onChange={this.onChange.bind(this)} 
+                        onInputChange={this.inputChange.bind(this)} 
                         valueKey="id" labelKey="all"
                         loadOptions={this.getUsers.bind(this)} 
                         backspaceRemoves={true}
