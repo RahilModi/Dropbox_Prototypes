@@ -11,11 +11,11 @@ public class Contents {
     private String virtualname;
     private String date;
     private String type;
-    private Boolean star;
+    private String star;
     private int userid;
     private List<User> members;
 
-    public Contents(int contentid, String originalname, String virtualname, String date, String type, Boolean star, int userid, List<User> members) {
+    public Contents(int contentid, String originalname, String virtualname, String date, String type, String star, int userid, List<User> members) {
         this.contentid = contentid;
         this.originalname = originalname;
         this.virtualname = virtualname;
@@ -68,11 +68,11 @@ public class Contents {
         this.type = type;
     }
 
-    public Boolean getStar() {
+    public String getStar() {
         return star;
     }
 
-    public void setStar(Boolean star) {
+    public void setStar(String star) {
         this.star = star;
     }
 

@@ -114,7 +114,7 @@ public class ContentService {
 
             // Add content start
             Date date = new Date();
-            Content content = new Content(name,path,date.toString(),userid,false);
+            Content content = new Content(name,path,date.toString(),userid,"NO");
             content.setType("file");
             content = contentRepository.save(content);
             // End
@@ -186,7 +186,7 @@ public class ContentService {
             Content content = new Content();
             content.setOriginalname(folder.getFoldername());
             content.setVirtualname(folder.getFoldername());
-            content.setStar(false);
+            content.setStar("NO");
             content.setDate(date.toString());
             content.setUserid(folder.getUserid());
             content.setType("folder");
@@ -315,10 +315,10 @@ public class ContentService {
             content.setOriginalname(data.getOriginalname());
             content.setVirtualname(data.getVirtualname());
             System.out.println(data.getStar());
-            if(data.getStar())
-                content.setStar(true);
+            if(data.getStar().equals("YES"))
+                content.setStar("NO");
             else
-                content.setStar(false);
+                content.setStar("YES");
             System.out.println(content.getStar());
             content.setDate(data.getDate());
             content.setUserid(data.getUserid());

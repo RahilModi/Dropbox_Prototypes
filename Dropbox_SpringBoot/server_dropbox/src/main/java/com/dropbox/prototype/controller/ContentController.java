@@ -101,6 +101,8 @@ public class ContentController {
     }
     @RequestMapping(path="/dostar",method = RequestMethod.POST)
     public Response dostar(@RequestBody Contents data) {
+
+        System.out.println(data);
         return contentService.dostar(data);
     }
 

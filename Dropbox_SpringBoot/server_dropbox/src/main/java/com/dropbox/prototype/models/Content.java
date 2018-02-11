@@ -12,10 +12,10 @@ public class Content {
     private String virtualname;
     private String date;
     private String type;
-    private Boolean star;
+    private String star;
     private Integer userid;
 
-    public Content(Integer contentid, String originalname, String virtualname, String date, String type, Boolean star, Integer userid) {
+    public Content(Integer contentid, String originalname, String virtualname, String date, String type, String star, Integer userid) {
         this.contentid = contentid;
         this.originalname = originalname;
         this.virtualname = virtualname;
@@ -27,7 +27,7 @@ public class Content {
 
     public Content(){}
 
-    public Content(String originalname, String virtualname, String date, Integer userid, Boolean star) {
+    public Content(String originalname, String virtualname, String date, Integer userid, String star) {
         this.originalname = originalname;
         this.virtualname = virtualname;
         this.date = date;
@@ -75,11 +75,11 @@ public class Content {
         this.type = type;
     }
 
-    public Boolean getStar() {
+    public String getStar() {
         return star;
     }
 
-    public void setStar(Boolean star) {
+    public void setStar(String star) {
         this.star = star;
     }
 

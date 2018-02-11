@@ -87,7 +87,7 @@ public class UserService {
             }else{
                 user = userRepository.save(new User(new_user.getFirstname(),new_user.getLastname(), new_user.getEmail(),new_user.getPassword()));
                 user.setSuggestions(new_user.getFirstname() + " " + new_user.getLastname() + " ( " + new_user.getEmail() + " )");
-                Content content = new Content("root","root",new Date().toString(),user.getId(),false);
+                Content content = new Content("root","root",new Date().toString(),user.getId(),"NO");
                 contentRepository.save(content);
                 response.setStatus("success");
                 response.setMsg("Account Created successfully...!!");
